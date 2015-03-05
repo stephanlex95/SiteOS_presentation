@@ -1,0 +1,105 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage[ngerman]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{hyperref}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{2pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{SiteOS AG} \\ [10pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Big Data Visualisierung \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Stephan Lex} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Problemstellung}
+\begin{itemize}
+\item Verwaltung sehr gro\ss{}er Dateimengen
+\item Analyse dieser Dateimengen
+\item Visualisierung der Relationen innerhalb der Menge 
+\item Interpretation und Filterung einzelner relevanten Teile
+\item Unabh\"angiges Querying
+\item Simples und ansprechendes Design f\"ur den Endnutzer
+\\
+\end{itemize}
+
+
+\section*{L\"osungsans\"atze}
+
+Apache Hadoop\footnote{\url{http://hadoop.apache.org/}} bietet durch das von Google entwickelte MapReduce-Verfahren\footnote{\url{http://de.wikipedia.org/wiki/MapReduce}} einen guten Algorithmus um gro\ss{}es Datenmengen zu crunchen und sortieren. Dabei gilt zu beachten, dass dieses Verfahren vor allem f\"ur Big Data entwickelt worden ist. So k\"onnen die Daten parallel und asynchron auf mehreren Recheneinheiten eines Clusters verarbeitet werden. Dem Entwickler steht es frei zu entscheiden, wie die ankommenden Daten verarbeitet werden, da die Map und Reduce Schnittstellen selbst implementiert werden. Allerdings sind die daraus gewonnenen Daten nur bedingt f\"ur den Endverbraucher tauglich, da sie nur relational gespeichert werden.\\
+
+Um diese Daten nun effizient auswerten und visualisieren zu k\"onnen bildet sich ein Import in eine NoSQL-Graphdatenbank wie Neo4J\footnote{\url{http://neo4j.com/}} an. Diese stellt die Datenvernetzungen als Graphensysteme dar. Durch Knoten und Kanten werden einzelne Objekte und Relationen \"ubersichtlicher und weniger redundant gespeichert. Die Abfrage in Neo4J erfolgt \"uber die eigene, an SQL angelehnte Query Sprache Cypher. Die Umstellung von relationaler auf graphischer Datenbank f\"uhrt zu gr\"o\ss{}erer \"Ubersichtlichkeit und gew\"ahrleistet sowohl einfacheres als auch schnelleres Querying.\\
+
+Optimal w\"are nun ein Joint dieser beiden Systeme, um gro\ss{}e Datenmengen zuerst relativ abstrakt zu analysieren und anschlie\ss{}end dem Nutzer ad\"aquat pr\"asentieren zu k\"onnen\footnote{\url{http://blog.xebia.com/2012/11/13/combining-neo4j-and-hadoop-part-i}}\footnote{\url{http://blog.xebia.com/2013/01/17/combining-neo4j-and-hadoop-part-ii/}}. Dazu stellen sowohl Hadoop als auch Neo4J umfangreiche APIs und Dokumentationen f\"ur Einbindung in andere Systeme bereit.\\
+
+Das Problem k\"onnte in Java mithilfe der Eclipse IDE\footnote{\url{https://eclipse.org/}} als vollwertige Java Applikation oder innerhalb einer RESTful\footnote{\url{http://neo4j.com/docs/milestone/rest-api.html}} Client-Server Kommunikation implementiert werden. Diese L\"osung bezieht sich auf den Fall, dass die Datenmengen noch nicht geordnet in einer relationalen Datenbank vorhanden sind. Sollte dies schon der Fall sein, k\"onnen auch gr\"o\ss{}ere Daten relative einfach mit der embedded-API\footnote{\url{http://neo4j.com/docs/stable/tutorials-java-embedded.html}} von Neo4J in die NoSQL Datenbank \"ubertragen werden.\\  
+
+\section*{Probleme}
+
+
+Allerdings gilt zu beachten, dass diese L\"osung umso komplizierter zu implementieren ist, je abstrakter und ungenauer die Informationen \"uber die Datenmengen sind. Deswegen ist es notwendig sich mit folgenden Fragen auseinanderzusetzen:
+
+\begin{itemize}
+\item Wie gro\ss{} sind die Datenmengen?
+\item Wie sind die Daten beschaffen?
+\item Wie regelm\"a\ss{}ig sind die Feeds?
+\item Welche Informationen sind f\"ur den Endverbraucher wichtig? Welche nicht?
+\item Sind die Datenmengen so gro\ss{}, dass ein Server-, Rechnercluster ben\"otigt wird.
+\item Sind die Daten vertraulich?
+\item Welches Objektmodell ist am besten geeignet?
+\end{itemize}
+
+\section*{Alternativen}
+In diesem L\"osungsansatz wurden Hadoop und Neo4J ausgew\"ahlt, da sie die momentan am h\"aufigst vertretenen und umfangreichsten Frameworks sind. Allerdings gibt es f\"ur die Problemstellung auch einige technische Alternativen, die verschiedenen Vorteile mit sich bringen.\\
+
+Apache Spark\footnote{\url{https://spark.apache.org/}} :
+\begin{itemize}
+\item Arbeitet bis zu 100x schneller als Hadoop. 
+\item Ist flexibler als Hadoop im Umgang mit verschiedenen Dateiformaten(Hadoop abh\"angig vom eigenen HDFS).
+\item Umfangreiche APIs f\"ur den Umgang mit Java, Scala und Python.
+\item Allerdings schlechtere Dokumentation und geringere Erfahrung als mit Hadoop.
+\item Weniger umfangreiches Angebot an Tools als Hadoop.
+\end{itemize}
+
+Presto\footnote{\url{https://prestodb.io/}} :
+\begin{itemize}
+\item Mehr eine andere Herangehensweise als ein direkter Ersatz f\"ur Hadoop.
+\item Stellt eine Query Engine dar, die variabel gro\ss{}e und beschaffene Datens\"atze in Echtzeit analysieren kann.
+\item Eine Engine, die sowohl Big Data verwalten kann, sowie diese auch in Echtzeit auswerten kann.
+\end{itemize}
+
+\end{document}
