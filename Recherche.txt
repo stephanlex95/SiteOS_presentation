@@ -1,0 +1,18 @@
+Importer: 
+Apache Sqoop:
+	- importiert Daten von RDBMS in HDFS
+
+Datenablage:
+Hadoop HDFS
+
+Filtering: 
+Hadoop MapReduce
+
+Visualisierung:
+existente Lösungen:
+	- Qlik Sense
+	- Tableau
+	
+NOSQL DBs:
+Neo4J mit Graphdatenbanken
+
