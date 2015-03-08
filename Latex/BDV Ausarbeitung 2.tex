@@ -1,0 +1,63 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage[ngerman]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{hyperref}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{2pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{SiteOS AG} \\ [10pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Big Data Visualisierung \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Stephan Lex} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section*{Problemstellung}
+Um eine gro\ss{}e Menge an Daten korrekt verarbeiten zu k\"onnen, bietet sich momentan eine L\"osung im Rahmen von Apache Hadoop an. Allerdings muss auch hier eine Auswahl an Tools getroffen werden, um die verschiedenen Teilbereiche zu decken.
+
+\section*{Importer}
+Hier bietet sich Apache Sqoop\footnote{\url{http://sqoop.apache.org/}} an. Sqoop stellt ein Framework dar, das einen effizienten Ansatz bietet Daten von einem RDBMS in das Hadoop-eigene Dateisystem HDFS zu importieren. Semi-structured-data hingegen kann relativ simpel mit der Hadoop Core API oder top-level Projekte wie Hive importiert werden.
+
+\section*{Storage}
+Da der Ansatz mit Hadoop gew\"ahlt wurde, wird hier das Hadoop Distributed File System (HDFS)\footnote{\url{http://hortonworks.com/hadoop/hdfs/}} verwendet. Da HDFS nach dem Master-Slave Prinzip aufgebaut ist, ist die Skalierbarkeit sehr gro\ss{}. So k\"onnen Cluster auf ben\"otigte und beinahe beliebige Gr\"o\ss{}e ausgedehnt werden. Das von HDFS in der Regel verwendete OS ist Linux. 
+
+\section*{Filtering und Zugriff}
+Um die zu verwaltenden Datens\"atze analysieren zu k\"onnen gibt es eigene Toolsets wie Hive\footnote{\url{https://hive.apache.org/}} und HBase \footnote{\url{http://hbase.apache.org/}}. Diese bieten benutzerfreundlichen Umgang mit der Big Data auf Basis von HDFS und erm\"oglichen individuelle Abhandlungen der spezifischen Anforderungen an das System, wie z.B. die wichtigen MadReduce Jobs. In diesem Bereich gibt es auch diverse Distributionen verschiedener Firmen, die viele n\"utzliche Tools im Umgang mit Hadoop unter einen Hut bringen, wie etwa Hortonworks\footnote{\url{http://hortonworks.com/}}.
+
+\section*{Visualisierung}
+Im Bereich der Visualisierung der gewonnenen Daten, gibt es bereits mehrere Softwarel\"osungen, die auf dem Markt etabliert sind. Diese k\"onnen zumeist variabel beschaffene und gro\ss{}e Daten importieren sowie verarbeiten und anschlie\ss{}end per benutzerfreundlicher GUI (Drag and Drop) visualisiert werden. Zu den bekanntesten darunter z\"ahlen momentan Qlik Sense\footnote{\url{http://www.qlik.com/}} und Tableau\footnote{\url{http://www.tableau.com/de-de}} 
+\end{document}
