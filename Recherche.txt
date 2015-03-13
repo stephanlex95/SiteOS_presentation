@@ -16,3 +16,4 @@ existente Lösungen:
 NOSQL DBs:
 Neo4J mit Graphdatenbanken
 
+http://www.bytemining.com/2011/08/hadoop-fatigue-alternatives-to-hadoop/

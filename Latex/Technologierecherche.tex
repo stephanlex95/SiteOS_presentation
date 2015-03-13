@@ -1,0 +1,88 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage[ngerman]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{hyperref}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{2pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{SiteOS AG} \\ [10pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Big Data Visualisierung \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Stephan Lex} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+
+\section*{Technologierecherche}
+Im Rahmen der Evaluierung m\"oglicher Technologien zur Analyse und Visualisierung von Big Data wird im folgenden eine Technologierecherche vorgenommen.
+\section{Technische Anforderungen}
+\begin{itemize}
+\item Verwaltung sehr gro\ss{}er Datenmengen
+\item Analyse dieser Datenmengen
+\item Visualisierung der Relationen innerhalb der Menge 
+\item Interpretation und Filterung einzelner relevanten Teile
+\item Unabh\"angiges Querying
+\item Simples und ansprechendes Design f\"ur den Endnutzer
+\end{itemize}
+
+\section{M\"ogliche Technologien (Webrecherche)}
+Wenn Daten zu gro\ss{} und kompliziert werden, um sie mit einem einzelnen Rechner zu bearbeiten, ist es unabdingbar von herk\"ommlichen Systemen abzuweichen und andere Technologien in Betracht zu ziehen. Der momentan dominierende Ansatz zur Verarbeitung solcher Datenmengen etwa bietet der MapReduce Ansatz\footnote{\url{http://www.pal-blog.de/entwicklung/perl/einfach-erklaert-mapreduct-tutorial.html}}.
+Allerdings gibt es heutzutage unz\"ahlige Tools und Frameworks die eine Implementierung des MapReduce Ansatzes oder alternativer Technologien bereitstellen\footnote{\url{http://www.bytemining.com/2011/08/hadoop-fatigue-alternatives-to-hadoop/}}.
+Im folgenden werden die pr\"asentesten Ans\"atze evaluiert.\\
+
+Durch Recherche im Web wurden folgende Ans\"atze ermittelt:
+\begin{itemize}
+\item Apache Hadoop \footnote{\url{http://hadoop.apache.org/}}
+\item Apache Spark \footnote{\url{https://spark.apache.org/}}
+\item Disco Project \footnote{\url{http://discoproject.org/}}
+\item HPCC Systems \footnote{\url{http://hpccsystems.com/}}
+\end{itemize}
+
+\section{Bewertungskriterien}
+Um eine passende Auswahl zu treffen m\"ussen die gew\"ahlten Ans\"atze hinsichtlich einiger Kriterien verglichen werden.
+Im Fall der Big Data Visualisierung sind das prim\"ar:
+
+\begin{itemize}
+ \item Effizienz 
+ \item Zukunftssicherheit
+ \item verf\"ugbare Tools
+ \item Verst\"andlichkeit und Einarbeitungsaufwand
+ \item Instandhaltungskosten
+\end{itemize} 
+
+
+\end{document}
