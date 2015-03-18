@@ -17,3 +17,6 @@ NOSQL DBs:
 Neo4J mit Graphdatenbanken
 
 http://www.bytemining.com/2011/08/hadoop-fatigue-alternatives-to-hadoop/
+http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis
+http://qph.is.quoracdn.net/main-qimg-f8e3143e5146acfb55f6cbdf0b23ba57?convert_to_webp=true
+http://www.infoworld.com/article/2610656/database/big-data-showdown--cassandra-vs--hbase.html?page=4
