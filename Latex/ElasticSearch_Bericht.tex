@@ -1,0 +1,64 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage[ngerman]{babel}
+%\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{2pt} % Customize the height of the header
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{SiteOS AG} \\ [10pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Technologierecherche ElasticSearch \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Stephan Lex} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+
+\section*{Einleitung}
+ElasticSearch stellt eine auf Apache Lucene\footnote{\url{https://lucene.apache.org/}} basierende Serverkomponente mit integrierter Search-Engine für u.a. Volltextsuche dar. Am häufigsten findet ElasticSearch Anwendung bei Problemen, die einen komplizierteren und verlässlichen Algorithmus, Daten zu suchen und analysieren, voraussetzen. 
+
+\section*{Funktionsweise}
+ElasticSearch arbeitet wie andere NoSQL Lösungen ebenfalls verteilt in einem Servercluster, der aus einem oder mehreren Nodes bestehen kann.
+Ebenfalls kommt hier das Master-Slave Prinzip zum Einsatz, das man z.B. von Hadoop schon kennt, wobei allerdings jeder Knoten eines ElasticSearch Clusters beide Rollen übernehmen kann. Die Daten, die in einem ElasticSearch Cluster gespeichert werden wollen, werden von diesem indiziert. Ein Index bezeichnet dabei eine kontextabhängige Gruppierung vom Aufbau und Inhalt ähnlicher Daten. Auf die Daten im Cluster können mithilfe der integrierten Search-Engine umfangreiche Suchanfragen ausgeführt werden. Die Client-Server-Kommunikation findet mithilfe von REST statt, kann aber auch mit der enthaltenen Java API umgesetzt werden. 
+
+\section*{Handhabung}
+Im Vergleich zu anderen größeren NoSQL Lösungen bietet ElasticSearch einen äußerst simplen und unkomplizierten Einsteig an. So ist es möglich mithilfe cURL\footnote{\url{http://curl.haxx.se/}} und einer Konsole in unter 10 Minuten einen voll funktionstüchtigen Cluster zu erstellen. Da ElasticSearch einen dokumentnahen Ansatz mithilfe vieler JSON Integrationen verfolgt, ist es sehr simpel die Nodes im Cluster mit Daten zu füttern. Dies kann man mithilfe eines browserintegrierten RESTClients oder mithilfe von cURL tun. 
+Um die im Cluster gespeicherten Daten nun suchen und analysieren zu können findet die von ElasticSearch entwickelte QueryDSL Anwendung. Sie stellt eine an das JSON Format angelehnte Querying Language dar, mit der es möglich ist auch kompliziertere Anfragen relativ verständlich zu verfassen. 
+
+
+
+\end{document}
